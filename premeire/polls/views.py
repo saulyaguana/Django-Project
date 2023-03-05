@@ -17,8 +17,11 @@ def detail(request, question_id):
 
 
 def results(request, question_identifier):
-    return HttpResponse(f'Estas viendo los resultados de la pregunta {question_identifier}')
-
+    question = get_object_or_404(Question, pk=question_identifier)
+    return render(request, "polls/results.html", {
+        "question": question
+    })
+    
 def vote(request, question_id):
     question = get_object_or_404(Question, pk=question_id)
     try:
