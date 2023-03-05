@@ -5,11 +5,11 @@ app_name = "polls"
 
 urlpatterns = [
     # example: /polls/
-    path("", views.index, name="index"),
+    path("", views.IndexView.as_view(), name="index"),
     # example: /polls/5
-    path("<int:question_id>/the_best_details/", views.detail, name="The Detail"),
+    path("<int:pk>/the_best_details/", views.DetailView.as_view(), name="The Detail"),
     # example: /polls/5/results
-    path("<int:question_identifier>/results/", views.results, name="The Results"),
+    path("<int:pk>/results/", views.ResultView.as_view(), name="The Results"),
     # example: /polls/5/vote
     path("<int:question_id>/vote/", views.vote, name="voting")
 ]
